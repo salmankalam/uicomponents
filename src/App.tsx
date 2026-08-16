@@ -47,7 +47,7 @@ function App() {
           </p>
 
           <h1 className="max-w-4xl text-center text-4xl font-light tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-            Make your website feel{" "}
+            Make your websites feel{" "}
             <DiaText
               repeat
               repeatDelay={1.5}
