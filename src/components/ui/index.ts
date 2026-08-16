@@ -15,3 +15,4 @@ export { InteractiveSelector } from "./interactive-selector";
 export { AuroraBackground, PortfolioPage } from "./starfall-portfolio-landing";
 export type { PortfolioPageProps } from "./starfall-portfolio-landing";
 export { Footer4Col } from "./footer-column";
+export { default as HoverFooter } from "./hover-footer";

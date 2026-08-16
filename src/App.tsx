@@ -6,6 +6,7 @@ import {
   DiaText,
   Footer4Col,
   GradientButton,
+  HoverFooter,
   InteractiveSelector,
   PortfolioPage,
   TextGlitchCSS,
@@ -46,7 +47,7 @@ function App() {
           </p>
 
           <h1 className="max-w-4xl text-center text-4xl font-light tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-            Make your text feel{" "}
+            Make your website feel{" "}
             <DiaText
               repeat
               repeatDelay={1.5}
@@ -461,12 +462,10 @@ export function Hero() {
         </section>
       )}
 
-      {/* ─── Simple Footer (Featured only) ─── */}
-      {show("featured") && (
-        <footer className="border-t border-[#e3e7ec] dark:border-[#2b2a25] py-8 text-center text-xs text-[#646b75] dark:text-[#9a958a]">
-          Powered by 21st.dev &middot; Components from the 21st MCP Marketplace
-        </footer>
-      )}
+      {/* ─── Real Footer (always visible) ─── */}
+      <footer className="bg-[#111] dark:bg-black">
+        <HoverFooter />
+      </footer>
     </div>
   );
 }
