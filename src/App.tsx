@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { Cpu } from "lucide-react";
 import {
   AnimatedTextCycle,
   AuroraBackground,
+  ClientFeedback,
   ContactForm,
   DiaText,
+  DropdownNavigation,
   Footer4Col,
   GradientButton,
   HoverFooter,
@@ -12,8 +15,10 @@ import {
   MetalButton,
   OriginButton,
   PortfolioPage,
+  StaggerTestimonials,
   TextGlitchCSS,
   TextReveal,
+  TiltCard,
   TypewriterEffectSmooth,
   VerticalTabs,
 } from "./components/ui";
@@ -491,6 +496,102 @@ export function Hero() {
             </p>
           </div>
           <InteractiveSelector />
+        </section>
+      )}
+
+      {/* ─── Tilt Card Showcase ─── */}
+      {show("interactive") && (
+        <section className="border-t border-[#e3e7ec] dark:border-[#2b2a25] py-24">
+          <div className="mx-auto max-w-6xl px-4 text-center">
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] bg-gradient-to-r from-violet-600/10 to-blue-600/10 dark:from-violet-400/20 dark:to-blue-400/20 text-violet-700 dark:text-violet-300 px-4 py-1.5 rounded-full border border-violet-200 dark:border-violet-800 inline-block">
+              Tilt Card — 3D Mouse Tracking
+            </h2>
+            <p className="mb-8 text-xs text-[#646b75] dark:text-[#9a958a]">
+              Card tilts toward the cursor with a soft glare highlight
+            </p>
+            <div className="flex justify-center">
+              <TiltCard max={15} className="w-full max-w-md">
+                <div className="rounded-2xl border border-[#e3e7ec] dark:border-[#2b2a25] bg-white dark:bg-[#111] p-10 text-left shadow-lg">
+                  <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-violet-500">
+                    21st.dev
+                  </p>
+                  <p className="text-xl font-light leading-relaxed text-[#646b75] dark:text-[#9a958a]">
+                    Interactive UI components that make your product feel alive.
+                  </p>
+                </div>
+              </TiltCard>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ─── Dropdown Navigation Showcase ─── */}
+      {show("interactive") && (
+        <section className="border-t border-[#e3e7ec] dark:border-[#2b2a25] py-24">
+          <div className="mx-auto max-w-6xl px-4">
+            <div className="text-center">
+              <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] bg-gradient-to-r from-violet-600/10 to-blue-600/10 dark:from-violet-400/20 dark:to-blue-400/20 text-violet-700 dark:text-violet-300 px-4 py-1.5 rounded-full border border-violet-200 dark:border-violet-800 inline-block">
+                Dropdown Navigation — Hover Menus
+              </h2>
+              <p className="mb-8 text-xs text-[#646b75] dark:text-[#9a958a]">
+                Animated mega-menu dropdowns with shared-layout transitions
+              </p>
+            </div>
+            <DropdownNavigation
+              navItems={[
+                {
+                  id: 1,
+                  label: "Products",
+                  subMenus: [
+                    {
+                      title: "Platform",
+                      items: [
+                        {
+                          label: "Previews",
+                          description: "Ship faster with live previews",
+                          icon: Cpu,
+                        },
+                      ],
+                    },
+                  ],
+                },
+                { id: 2, label: "Docs", link: "#" },
+                { id: 3, label: "Pricing", link: "#" },
+              ]}
+            />
+          </div>
+        </section>
+      )}
+
+      {/* ─── Staggered Testimonials Showcase ─── */}
+      {show("interactive") && (
+        <section className="border-t border-[#e3e7ec] dark:border-[#2b2a25] py-24">
+          <div className="mx-auto max-w-6xl px-4">
+            <div className="text-center">
+              <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] bg-gradient-to-r from-violet-600/10 to-blue-600/10 dark:from-violet-400/20 dark:to-blue-400/20 text-violet-700 dark:text-violet-300 px-4 py-1.5 rounded-full border border-violet-200 dark:border-violet-800 inline-block">
+                Staggered Testimonials — Carousel
+              </h2>
+              <p className="mb-8 text-xs text-[#646b75] dark:text-[#9a958a]">
+                Stacked testimonial cards that rotate on demand
+              </p>
+            </div>
+            <StaggerTestimonials />
+          </div>
+        </section>
+      )}
+
+      {/* ─── Client Feedback Showcase ─── */}
+      {show("interactive") && (
+        <section className="border-t border-[#e3e7ec] dark:border-[#2b2a25] py-24">
+          <div className="mx-auto max-w-6xl px-4 text-center">
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] bg-gradient-to-r from-violet-600/10 to-blue-600/10 dark:from-violet-400/20 dark:to-blue-400/20 text-violet-700 dark:text-violet-300 px-4 py-1.5 rounded-full border border-violet-200 dark:border-violet-800 inline-block">
+              Testimonial — Client Feedback
+            </h2>
+            <p className="mb-8 text-xs text-[#646b75] dark:text-[#9a958a]">
+              Polished testimonial card with avatar and quote
+            </p>
+            <ClientFeedback />
+          </div>
         </section>
       )}
 
