@@ -29,7 +29,7 @@ export { MetalButton } from "./18_metal-button";
 export type { MetalButtonProps } from "./18_metal-button";
 export { OriginButton } from "./19_origin-button";
 export type { OriginButtonProps } from "./19_origin-button";
-export { DropdownNavigation } from "./20_dropdown-navigation";
+export { DropdownNavigation, NAV_ITEMS } from "./20_dropdown-navigation";
 export type { NavItem } from "./20_dropdown-navigation";
 export { StaggerTestimonials } from "./21_staggered-testimonials";
 export { ClientFeedback } from "./22_testimonial";

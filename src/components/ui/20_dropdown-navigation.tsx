@@ -131,8 +131,7 @@ import {
   Newspaper,
 } from "lucide-react";
 
-function Demo() {
-  const NAV_ITEMS = [
+export const NAV_ITEMS: NavItem[] = [
     {
       id: 1,
       label: "Products",
@@ -323,6 +322,7 @@ function Demo() {
     },
   ];
 
+function Demo() {
   return <DropdownNavigation navItems={NAV_ITEMS} />;
 }
 

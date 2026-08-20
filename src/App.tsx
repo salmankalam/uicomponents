@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Cpu } from "lucide-react";
 import {
   AnimatedTextCycle,
   AuroraBackground,
@@ -13,6 +12,7 @@ import {
   InteractiveSelector,
   LiquidButton,
   MetalButton,
+  NAV_ITEMS,
   OriginButton,
   PortfolioPage,
   StaggerTestimonials,
@@ -23,14 +23,17 @@ import {
   VerticalTabs,
 } from "./components/ui";
 
-type Category = "featured" | "text-animations" | "buttons" | "forms" | "interactive" | "landing" | "footer";
+type Category = "featured" | "text-animations" | "buttons" | "forms" | "carousel" | "cards" | "testimonials" | "dropdown" | "landing" | "footer";
 
 const categories: { id: Category; label: string }[] = [
   { id: "featured", label: "Featured" },
   { id: "text-animations", label: "Text Animations" },
   { id: "buttons", label: "Buttons" },
   { id: "forms", label: "Inputs & Forms" },
-  { id: "interactive", label: "Interactive" },
+  { id: "carousel", label: "Carousel" },
+  { id: "cards", label: "Cards" },
+  { id: "testimonials", label: "Testimonials" },
+  { id: "dropdown", label: "Dropdown" },
   { id: "landing", label: "Landing Page" },
   { id: "footer", label: "Footer" },
 ];
@@ -470,7 +473,7 @@ export function Hero() {
       )}
 
       {/* ─── Vertical Tabs Showcase ─── */}
-      {show("interactive") && (
+      {show("carousel") && (
         <section className="border-t border-[#e3e7ec] dark:border-[#2b2a25]">
           <div className="mx-auto max-w-6xl px-4 text-center">
             <h2 className="mb-4 mt-24 text-sm font-semibold uppercase tracking-[0.2em] bg-gradient-to-r from-violet-600/10 to-blue-600/10 dark:from-violet-400/20 dark:to-blue-400/20 text-violet-700 dark:text-violet-300 px-4 py-1.5 rounded-full border border-violet-200 dark:border-violet-800 inline-block">
@@ -485,7 +488,7 @@ export function Hero() {
       )}
 
       {/* ─── Interactive Selector Showcase ─── */}
-      {show("interactive") && (
+      {show("carousel") && (
         <section className="border-t border-[#e3e7ec] dark:border-[#2b2a25]">
           <div className="mx-auto max-w-6xl px-4 pt-24 text-center">
             <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] bg-gradient-to-r from-violet-600/10 to-blue-600/10 dark:from-violet-400/20 dark:to-blue-400/20 text-violet-700 dark:text-violet-300 px-4 py-1.5 rounded-full border border-violet-200 dark:border-violet-800 inline-block">
@@ -500,7 +503,7 @@ export function Hero() {
       )}
 
       {/* ─── Tilt Card Showcase ─── */}
-      {show("interactive") && (
+      {show("cards") && (
         <section className="border-t border-[#e3e7ec] dark:border-[#2b2a25] py-24">
           <div className="mx-auto max-w-6xl px-4 text-center">
             <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] bg-gradient-to-r from-violet-600/10 to-blue-600/10 dark:from-violet-400/20 dark:to-blue-400/20 text-violet-700 dark:text-violet-300 px-4 py-1.5 rounded-full border border-violet-200 dark:border-violet-800 inline-block">
@@ -526,7 +529,7 @@ export function Hero() {
       )}
 
       {/* ─── Dropdown Navigation Showcase ─── */}
-      {show("interactive") && (
+      {show("dropdown") && (
         <section className="border-t border-[#e3e7ec] dark:border-[#2b2a25] py-24">
           <div className="mx-auto max-w-6xl px-4">
             <div className="text-center">
@@ -537,34 +540,13 @@ export function Hero() {
                 Animated mega-menu dropdowns with shared-layout transitions
               </p>
             </div>
-            <DropdownNavigation
-              navItems={[
-                {
-                  id: 1,
-                  label: "Products",
-                  subMenus: [
-                    {
-                      title: "Platform",
-                      items: [
-                        {
-                          label: "Previews",
-                          description: "Ship faster with live previews",
-                          icon: Cpu,
-                        },
-                      ],
-                    },
-                  ],
-                },
-                { id: 2, label: "Docs", link: "#" },
-                { id: 3, label: "Pricing", link: "#" },
-              ]}
-            />
+            <DropdownNavigation navItems={NAV_ITEMS} />
           </div>
         </section>
       )}
 
       {/* ─── Staggered Testimonials Showcase ─── */}
-      {show("interactive") && (
+      {show("testimonials") && (
         <section className="border-t border-[#e3e7ec] dark:border-[#2b2a25] py-24">
           <div className="mx-auto max-w-6xl px-4">
             <div className="text-center">
@@ -581,7 +563,7 @@ export function Hero() {
       )}
 
       {/* ─── Client Feedback Showcase ─── */}
-      {show("interactive") && (
+      {show("testimonials") && (
         <section className="border-t border-[#e3e7ec] dark:border-[#2b2a25] py-24">
           <div className="mx-auto max-w-6xl px-4 text-center">
             <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] bg-gradient-to-r from-violet-600/10 to-blue-600/10 dark:from-violet-400/20 dark:to-blue-400/20 text-violet-700 dark:text-violet-300 px-4 py-1.5 rounded-full border border-violet-200 dark:border-violet-800 inline-block">
