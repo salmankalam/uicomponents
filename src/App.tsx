@@ -25,17 +25,44 @@ import {
 
 type Category = "featured" | "text-animations" | "buttons" | "forms" | "carousel" | "cards" | "testimonials" | "dropdown" | "landing" | "footer";
 
-const categories: { id: Category; label: string }[] = [
-  { id: "featured", label: "Featured" },
-  { id: "text-animations", label: "Text Animations" },
-  { id: "buttons", label: "Buttons" },
-  { id: "forms", label: "Inputs & Forms" },
-  { id: "carousel", label: "Carousel" },
-  { id: "cards", label: "Cards" },
-  { id: "testimonials", label: "Testimonials" },
-  { id: "dropdown", label: "Dropdown" },
-  { id: "landing", label: "Landing Page" },
-  { id: "footer", label: "Footer" },
+const categoryCounts: Record<Category, number> = {
+  featured: 0,
+  "text-animations": 6,
+  buttons: 4,
+  forms: 1,
+  carousel: 2,
+  cards: 1,
+  testimonials: 2,
+  dropdown: 1,
+  landing: 1,
+  footer: 1,
+};
+
+const categoryLabels: Record<Category, string> = {
+  featured: "Featured",
+  "text-animations": "Text Animations",
+  buttons: "Buttons",
+  forms: "Inputs & Forms",
+  carousel: "Carousel",
+  cards: "Cards",
+  testimonials: "Testimonials",
+  dropdown: "Dropdown",
+  landing: "Landing Page",
+  footer: "Footer",
+};
+
+const categories: { id: Category; label: string; count: number }[] = [
+  { id: "featured", label: categoryLabels.featured, count: categoryCounts.featured },
+  ...(
+    Object.keys(categoryCounts)
+      .filter((id): id is Category => id !== "featured")
+      .map((id) => ({
+        id,
+        label: categoryLabels[id],
+        count: categoryCounts[id],
+      }))
+      .sort((a, b) => b.count - a.count)
+  ),
 ];
 
 function App() {
@@ -81,19 +108,30 @@ function App() {
       </div>
 
       {/* ─── Category Nav Bar ─── */}
-      <section className="border-y border-[#e3e7ec] dark:border-[#2b2a25] bg-[#fafafa] dark:bg-[#1a1a18]">
-        <div className="mx-auto flex max-w-6xl gap-2 overflow-x-auto px-4 py-3">
+      <section className="sticky top-0 z-40 border-y border-[#e3e7ec] dark:border-[#2b2a25] bg-white/80 dark:bg-[#1a1a18]/80 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-6xl items-center gap-2 overflow-x-auto px-4 py-3">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+              className={`group relative flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 ${
                 activeCategory === cat.id
-                  ? "bg-[#111] text-white dark:bg-[#f6f3ec] dark:text-[#111]"
-                  : " text-[#646b75] hover:text-[#111] dark:text-[#9a958a] dark:hover:text-[#f6f3ec]"
+                  ? "bg-[#111] text-white shadow-lg shadow-black/10 dark:bg-[#f6f3ec] dark:text-[#111] dark:shadow-white/10"
+                  : "text-[#646b75] hover:bg-black/5 hover:text-[#111] dark:text-[#9a958a] dark:hover:bg-white/10 dark:hover:text-[#f6f3ec]"
               }`}
             >
-              {cat.label}
+              <span>{cat.label}</span>
+              {cat.count > 0 && (
+                <span
+                  className={`flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[11px] font-semibold tabular-nums transition-colors ${
+                    activeCategory === cat.id
+                      ? "bg-white/20 text-white dark:bg-black/20 dark:text-[#111]"
+                      : "bg-black/5 text-[#646b75] group-hover:bg-black/10 dark:bg-white/10 dark:text-[#9a958a] dark:group-hover:bg-white/15"
+                  }`}
+                >
+                  {cat.count}
+                </span>
+              )}
             </button>
           ))}
         </div>
