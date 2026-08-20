@@ -147,22 +147,22 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     <div
       onClick={() => handleMove(position)}
       className={cn(
-        "group absolute left-1/2 top-1/2 cursor-pointer rounded-3xl border-2 p-8 transition-all duration-700 ease-in-out will-change-transform",
+        "group absolute left-1/2 top-1/2 cursor-pointer border-2 p-8 transition-all duration-700 ease-in-out will-change-transform",
         isCenter
-          ? "z-20 border-violet-500 bg-primary text-primary-foreground shadow-2xl shadow-violet-500/20"
-          : "z-10 border-border bg-card text-card-foreground opacity-55 hover:z-40 hover:border-violet-400/70 hover:opacity-100 hover:brightness-110 hover:shadow-xl hover:shadow-black/10"
+          ? "border-primary bg-primary text-primary-foreground shadow-2xl shadow-primary/30"
+          : "border-border bg-card text-card-foreground opacity-50 hover:border-violet-400/70 hover:opacity-100 hover:brightness-110 hover:shadow-xl hover:shadow-black/10"
       )}
       style={{
         width: cardSize,
         height: cardSize,
         transform: `
           translate(-50%, -50%) 
-          translateX(${(cardSize / 2) * position}px)
+          translateX(${(cardSize / 1.35) * position}px)
           translateY(${isCenter ? -60 : position % 2 ? 18 : -18}px)
           rotate(${isCenter ? 0 : position % 2 ? 4 : -4}deg)
-          scale(${isCenter ? 1 : 0.9})
+          scale(${isCenter ? 1 : 0.92})
         `,
-        zIndex: isCenter ? 30 : 20 - Math.abs(position),
+        zIndex: isCenter ? 50 : 50 - Math.abs(position) * 2,
       }}
     >
       {isCenter && (
@@ -209,34 +209,21 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 
 export const StaggerTestimonials: React.FC = () => {
   const [cardSize, setCardSize] = useState(365);
-  const [testimonialsList, setTestimonialsList] = useState(testimonials);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
   const handleMove = (steps: number) => {
     if (isAnimating) return;
     setIsAnimating(true);
-    const newList = [...testimonialsList];
-    if (steps > 0) {
-      for (let i = steps; i > 0; i--) {
-        const item = newList.shift();
-        if (!item) return;
-        newList.push({ ...item, tempId: Math.random() });
-      }
-    } else {
-      for (let i = steps; i < 0; i++) {
-        const item = newList.pop();
-        if (!item) return;
-        newList.unshift({ ...item, tempId: Math.random() });
-      }
-    }
-    setTestimonialsList(newList);
+    const len = testimonials.length;
+    setCurrentIndex((prev) => (prev + steps + len) % len);
     setTimeout(() => setIsAnimating(false), 700);
   };
 
   useEffect(() => {
     const updateSize = () => {
       const { matches } = window.matchMedia("(min-width: 640px)");
-      setCardSize(matches ? 360 : 280);
+      setCardSize(matches ? 365 : 280);
     };
 
     updateSize();
@@ -245,28 +232,27 @@ export const StaggerTestimonials: React.FC = () => {
   }, []);
 
   const visibleCount = 5;
-  const sliceStart = Math.floor(testimonialsList.length / 2) - Math.floor(visibleCount / 2);
-  const visible = testimonialsList.slice(sliceStart, sliceStart + visibleCount);
-  const focusIndex = Math.floor(visible.length / 2);
+  const half = Math.floor(visibleCount / 2);
+  const visible = Array.from({ length: visibleCount }, (_, i) => {
+    const idx = (currentIndex - half + i + testimonials.length) % testimonials.length;
+    return { testimonial: testimonials[idx], position: i - half };
+  });
 
   return (
     <div
-      className="relative w-full overflow-hidden rounded-3xl bg-muted/40"
-      style={{ height: 520 }}
+      className="relative w-full overflow-hidden bg-muted/30"
+      style={{ height: 600 }}
     >
       <div className="relative h-full">
-        {visible.map((testimonial, i) => {
-          const position = i - focusIndex;
-          return (
-            <TestimonialCard
-              key={testimonial.tempId}
-              testimonial={testimonial}
-              handleMove={handleMove}
-              position={position}
-              cardSize={cardSize}
-            />
-          );
-        })}
+        {visible.map(({ testimonial, position }) => (
+          <TestimonialCard
+            key={testimonial.tempId}
+            testimonial={testimonial}
+            handleMove={handleMove}
+            position={position}
+            cardSize={cardSize}
+          />
+        ))}
       </div>
       <div className="absolute bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-3">
         <button
@@ -281,7 +267,7 @@ export const StaggerTestimonials: React.FC = () => {
           <ChevronLeft className="h-5 w-5" />
         </button>
         <span className="min-w-20 text-center text-sm font-medium tabular-nums text-muted-foreground">
-          {focusIndex + sliceStart + 1} / {testimonials.length}
+          {currentIndex + 1} / {testimonials.length}
         </span>
         <button
           onClick={() => handleMove(1)}
