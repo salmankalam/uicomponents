@@ -8,6 +8,9 @@ import {
   GradientButton,
   HoverFooter,
   InteractiveSelector,
+  LiquidButton,
+  MetalButton,
+  OriginButton,
   PortfolioPage,
   TextGlitchCSS,
   TextReveal,
@@ -263,6 +266,11 @@ function App() {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
               <GradientButton>Get Started</GradientButton>
               <GradientButton variant="variant">Get Started</GradientButton>
+            </div>
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-6">
+              <LiquidButton>Liquid Glass</LiquidButton>
+              <MetalButton>Metal</MetalButton>
+              <OriginButton>Origin</OriginButton>
             </div>
           </div>
         </section>
