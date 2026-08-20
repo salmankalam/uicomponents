@@ -16,6 +16,22 @@
     --ic-input: #e3e7ec;
     --ic-ring: rgba(17, 17, 17, 0.16);
 
+    --background: var(--ic-background);
+    --foreground: var(--ic-foreground);
+    --primary: var(--ic-primary);
+    --primary-foreground: var(--ic-background);
+    --secondary: var(--ic-secondary);
+    --secondary-foreground: var(--ic-background);
+    --border: var(--ic-border);
+    --card: var(--ic-card);
+    --card-foreground: var(--ic-card-foreground);
+    --muted: var(--ic-muted);
+    --muted-foreground: var(--ic-muted-foreground);
+    --accent: var(--ic-accent);
+    --accent-foreground: var(--ic-accent-foreground);
+    --input: var(--ic-input);
+    --ring: var(--ic-ring);
+
     --color-background: var(--ic-background);
     --color-foreground: var(--ic-foreground);
     --color-primary: var(--ic-primary);
@@ -47,6 +63,22 @@
     --ic-accent-foreground: #f6f3ec;
     --ic-input: #2b2a25;
     --ic-ring: rgba(246, 243, 236, 0.18);
+
+    --background: var(--ic-background);
+    --foreground: var(--ic-foreground);
+    --primary: var(--ic-primary);
+    --primary-foreground: var(--ic-background);
+    --secondary: var(--ic-secondary);
+    --secondary-foreground: var(--ic-background);
+    --border: var(--ic-border);
+    --card: var(--ic-card);
+    --card-foreground: var(--ic-card-foreground);
+    --muted: var(--ic-muted);
+    --muted-foreground: var(--ic-muted-foreground);
+    --accent: var(--ic-accent);
+    --accent-foreground: var(--ic-accent-foreground);
+    --input: var(--ic-input);
+    --ring: var(--ic-ring);
 
     --color-background: var(--ic-background);
     --color-foreground: var(--ic-foreground);

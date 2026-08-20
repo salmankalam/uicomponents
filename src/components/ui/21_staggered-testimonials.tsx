@@ -149,24 +149,22 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     <div
       onClick={() => handleMove(position)}
       className={cn(
-        "absolute left-1/2 top-1/2 cursor-pointer border p-6 transition-all duration-500 ease-in-out",
-        isCenter
-          ? "z-10 bg-primary text-primary-foreground border-primary shadow-xl"
+        "absolute left-1/2 top-1/2 cursor-pointer border-2 p-8 transition-all duration-500 ease-in-out",
+        isCenter 
+          ? "z-10 bg-primary text-primary-foreground border-primary" 
           : "z-0 bg-card text-card-foreground border-border hover:border-primary/50"
       )}
       style={{
         width: cardSize,
         height: cardSize,
-        borderRadius: 24,
+        clipPath: `polygon(50px 0%, calc(100% - 50px) 0%, 100% 50px, 100% 100%, calc(100% - 50px) 100%, 50px 100%, 0 100%, 0 0)`,
         transform: `
           translate(-50%, -50%) 
-          translateX(${(cardSize / 2.2) * position}px)
-          translateY(${isCenter ? -55 : position % 2 ? 15 : -15}px)
-          rotate(${isCenter ? 0 : position % 2 ? 3 : -3}deg)
-          scale(${isCenter ? 1 : 0.95})
+          translateX(${(cardSize / 1.5) * position}px)
+          translateY(${isCenter ? -65 : position % 2 ? 15 : -15}px)
+          rotate(${isCenter ? 0 : position % 2 ? 2.5 : -2.5}deg)
         `,
-        opacity: isCenter ? 1 : 0.85,
-        boxShadow: isCenter ? "0 24px 48px -12px rgba(0,0,0,0.25)" : "none"
+        boxShadow: isCenter ? "0px 8px 0px 4px hsl(var(--border))" : "0px 0px 0px 0px transparent"
       }}
     >
       <span
@@ -181,19 +179,19 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       <img
         src={testimonial.imgSrc}
         alt={`${testimonial.by.split(',')[0]}`}
-        className="mb-4 h-12 w-12 rounded-full bg-muted object-cover object-top"
+        className="mb-4 h-14 w-12 bg-muted object-cover object-top"
         style={{
-          boxShadow: "3px 3px 0px hsl(var(--ic-background))"
+          boxShadow: "3px 3px 0px hsl(var(--background))"
         }}
       />
       <h3 className={cn(
-        "text-base sm:text-xl font-medium leading-relaxed",
+        "text-base sm:text-xl font-medium",
         isCenter ? "text-primary-foreground" : "text-foreground"
       )}>
         "{testimonial.testimonial}"
       </h3>
       <p className={cn(
-        "absolute bottom-6 left-6 right-6 mt-2 text-sm italic",
+        "absolute bottom-8 left-8 right-8 mt-2 text-sm italic",
         isCenter ? "text-primary-foreground/80" : "text-muted-foreground"
       )}>
         - {testimonial.by}
@@ -237,8 +235,8 @@ export const StaggerTestimonials: React.FC = () => {
 
   return (
     <div
-      className="relative w-full overflow-hidden rounded-2xl bg-muted/40"
-      style={{ height: 560 }}
+      className="relative w-full overflow-hidden bg-muted/30"
+      style={{ height: 600 }}
     >
       {testimonialsList.map((testimonial, index) => {
         const position = testimonialsList.length % 2
