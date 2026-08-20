@@ -23,8 +23,9 @@ export {
   buttonVariants,
   liquidbuttonVariants,
   LiquidButton,
-  MetalButton,
 } from "./17_liquid-glass-button";
 export type { ButtonProps } from "./17_liquid-glass-button";
-export { OriginButton } from "./18_origin-button";
-export type { OriginButtonProps } from "./18_origin-button";
+export { MetalButton } from "./18_metal-button";
+export type { MetalButtonProps } from "./18_metal-button";
+export { OriginButton } from "./19_origin-button";
+export type { OriginButtonProps } from "./19_origin-button";

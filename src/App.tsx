@@ -283,8 +283,6 @@ function App() {
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
               <LiquidButton>Liquid Glass</LiquidButton>
-              <LiquidButton variant="outline">Outline</LiquidButton>
-              <LiquidButton variant="secondary">Secondary</LiquidButton>
             </div>
           </div>
         </section>
@@ -319,7 +317,6 @@ function App() {
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
               <OriginButton>Get Started</OriginButton>
-              <OriginButton loading>Loading</OriginButton>
             </div>
           </div>
         </section>
