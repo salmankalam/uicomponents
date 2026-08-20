@@ -3,7 +3,7 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 
-import { SmoothInput } from "./smooth-caret-input-skiperui";
+import { SmoothInput } from "./09_smooth-caret-input-skiperui";
 
 interface BookingFormData {
   fullName: string;

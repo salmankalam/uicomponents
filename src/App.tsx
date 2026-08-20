@@ -43,7 +43,7 @@ function App() {
         <AuroraBackground />
         <div className="relative z-10 flex h-dvh flex-col items-center justify-center overflow-hidden px-4">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] bg-gradient-to-r from-violet-600/10 to-blue-600/10 dark:from-violet-400/20 dark:to-blue-400/20 text-violet-700 dark:text-violet-300 px-4 py-1.5 rounded-full border border-violet-200 dark:border-violet-800 inline-block">
-            21st.dev Showcase
+            Personal UI Styles Showcase
           </p>
 
           <h1 className="max-w-4xl text-center text-4xl font-light tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
