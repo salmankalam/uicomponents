@@ -267,10 +267,59 @@ function App() {
               <GradientButton>Get Started</GradientButton>
               <GradientButton variant="variant">Get Started</GradientButton>
             </div>
-            <div className="mt-12 flex flex-wrap items-center justify-center gap-6">
+          </div>
+        </section>
+      )}
+
+      {/* ─── Liquid Glass Button Showcase ─── */}
+      {show("buttons") && (
+        <section className="py-24">
+          <div className="mx-auto max-w-6xl px-4 text-center">
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] bg-gradient-to-r from-violet-600/10 to-blue-600/10 dark:from-violet-400/20 dark:to-blue-400/20 text-violet-700 dark:text-violet-300 px-4 py-1.5 rounded-full border border-violet-200 dark:border-violet-800 inline-block">
+              Liquid Glass Button
+            </h2>
+            <p className="mb-3 text-xs text-[#646b75] dark:text-[#9a958a]">
+              Frosted glass with liquid fill · Hover to see the effect
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
               <LiquidButton>Liquid Glass</LiquidButton>
+              <LiquidButton variant="outline">Outline</LiquidButton>
+              <LiquidButton variant="secondary">Secondary</LiquidButton>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ─── Metal Button Showcase ─── */}
+      {show("buttons") && (
+        <section className="border-y border-[#e3e7ec] dark:border-[#2b2a25] py-24">
+          <div className="mx-auto max-w-6xl px-4 text-center">
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] bg-gradient-to-r from-violet-600/10 to-blue-600/10 dark:from-violet-400/20 dark:to-blue-400/20 text-violet-700 dark:text-violet-300 px-4 py-1.5 rounded-full border border-violet-200 dark:border-violet-800 inline-block">
+              Metal Button
+            </h2>
+            <p className="mb-3 text-xs text-[#646b75] dark:text-[#9a958a]">
+              Brushed metal finish with sheen · Hover for reflection
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
               <MetalButton>Metal</MetalButton>
-              <OriginButton>Origin</OriginButton>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ─── Origin Button Showcase ─── */}
+      {show("buttons") && (
+        <section className="py-24">
+          <div className="mx-auto max-w-6xl px-4 text-center">
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] bg-gradient-to-r from-violet-600/10 to-blue-600/10 dark:from-violet-400/20 dark:to-blue-400/20 text-violet-700 dark:text-violet-300 px-4 py-1.5 rounded-full border border-violet-200 dark:border-violet-800 inline-block">
+              Origin Button — Fill on Hover
+            </h2>
+            <p className="mb-3 text-xs text-[#646b75] dark:text-[#9a958a]">
+              Ink-fill expands from the cursor position · Touch and keyboard friendly
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
+              <OriginButton>Get Started</OriginButton>
+              <OriginButton loading>Loading</OriginButton>
             </div>
           </div>
         </section>
