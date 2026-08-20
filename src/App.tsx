@@ -110,7 +110,7 @@ function App() {
 
       {/* ─── Category Nav Bar ─── */}
       <section className="border-b border-[#e3e7ec] dark:border-[#2b2a25] bg-white/80 dark:bg-[#1a1a18]/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-6xl items-center gap-1 overflow-x-auto px-4 py-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-1 px-4 py-2.5">
           {categories.map((cat) => {
             const active = activeCategory === cat.id;
             return (
