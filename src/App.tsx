@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "motion/react";
 import {
   AnimatedTextCycle,
   AuroraBackground,
@@ -108,32 +109,46 @@ function App() {
       </div>
 
       {/* ─── Category Nav Bar ─── */}
-      <section className="sticky top-0 z-40 border-y border-[#e3e7ec] dark:border-[#2b2a25] bg-white/80 dark:bg-[#1a1a18]/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-6xl items-center gap-2 overflow-x-auto px-4 py-3">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`group relative flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-200 ${
-                activeCategory === cat.id
-                  ? "bg-[#111] text-white shadow-lg shadow-black/10 dark:bg-[#f6f3ec] dark:text-[#111] dark:shadow-white/10"
-                  : "text-[#646b75] hover:bg-black/5 hover:text-[#111] dark:text-[#9a958a] dark:hover:bg-white/10 dark:hover:text-[#f6f3ec]"
-              }`}
-            >
-              <span>{cat.label}</span>
-              {cat.count > 0 && (
+      <section className="border-b border-[#e3e7ec] dark:border-[#2b2a25] bg-white/80 dark:bg-[#1a1a18]/80 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-6xl items-center gap-1 overflow-x-auto px-4 py-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {categories.map((cat) => {
+            const active = activeCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className="group relative flex items-center gap-2 whitespace-nowrap rounded-xl px-4 py-2 text-sm font-medium outline-none transition-colors"
+              >
+                {active && (
+                  <motion.span
+                    layoutId="category-pill"
+                    className="absolute inset-0 rounded-xl bg-gradient-to-r from-violet-600/10 to-blue-600/10 ring-1 ring-inset ring-violet-500/30 dark:from-violet-400/20 dark:to-blue-400/20 dark:ring-violet-400/40"
+                    transition={{ type: "spring", stiffness: 500, damping: 35 }}
+                  />
+                )}
                 <span
-                  className={`flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[11px] font-semibold tabular-nums transition-colors ${
-                    activeCategory === cat.id
-                      ? "bg-white/20 text-white dark:bg-black/20 dark:text-[#111]"
-                      : "bg-black/5 text-[#646b75] group-hover:bg-black/10 dark:bg-white/10 dark:text-[#9a958a] dark:group-hover:bg-white/15"
+                  className={`relative z-10 transition-colors ${
+                    active
+                      ? "bg-gradient-to-r from-violet-600 to-blue-600 bg-clip-text text-transparent dark:from-violet-400 dark:to-blue-400"
+                      : "text-[#646b75] group-hover:text-[#111] dark:text-[#9a958a] dark:group-hover:text-[#f6f3ec]"
                   }`}
                 >
-                  {cat.count}
+                  {cat.label}
                 </span>
-              )}
-            </button>
-          ))}
+                {cat.count > 0 && (
+                  <span
+                    className={`relative z-10 flex h-5 min-w-5 items-center justify-center rounded-md px-1.5 text-[11px] font-semibold tabular-nums transition-colors ${
+                      active
+                        ? "bg-violet-600/10 text-violet-700 dark:bg-violet-400/20 dark:text-violet-300"
+                        : "bg-[#eef0f3] text-[#646b75] group-hover:bg-[#e6e8ec] dark:bg-white/10 dark:text-[#9a958a] dark:group-hover:bg-white/15"
+                    }`}
+                  >
+                    {cat.count}
+                  </span>
+                )}
+              </button>
+            );
+          })}
         </div>
       </section>
 
