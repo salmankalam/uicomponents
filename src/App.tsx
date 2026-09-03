@@ -76,7 +76,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-dvh bg-white dark:bg-[#111] text-[#111] dark:text-[#f6f3ec] transition-colors">
+    <div className="min-h-dvh overflow-x-hidden bg-white dark:bg-[#111] text-[#111] dark:text-[#f6f3ec] transition-colors">
       {/* ─── Hero Section (Aurora Background) ─── */}
       <div className="relative h-dvh overflow-hidden">
         <AuroraBackground />
